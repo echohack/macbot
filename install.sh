@@ -244,6 +244,10 @@ echo "Turn on Mac App Store auto-update."
 run defaults write com.apple.commerce AutoUpdate -bool true
 
 # Install Applications
+
+# Note: Before installing Homebrew, set the following settings in your .bash_profile for increased privacy.
+# export HOMEBREW_NO_ANALYTICS=1
+# export HOMEBREW_NO_INSECURE_REDIRECT=1
 echo "Install Homebrew."
 which -s brew
 if [[ $? != 0 ]] ; then
