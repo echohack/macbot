@@ -10,10 +10,6 @@ Uses highly advanced *grass fed*, *black hole accretion disc powered* shell scri
 
 2. Modify the `install.sh`. You'll probably want to tweak some of the performance settings, and install different applications.
 
-3. Run install.sh.
-
-```
-sh ./install.sh
-```
+3. Run install.sh. `sh ./install.sh`
 
 4. Automating everything is not always feasible, so fill out your own backup.md and install.md to document any extra manual steps, so you don't forget.
