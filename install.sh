@@ -60,13 +60,6 @@ run sudo scutil --set LocalHostName "'$computer_name'"
 run sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "'$computer_name'"
 
 # UX And Performance Improvements
-echo "Disable Gate Keeper."
-run sudo spctl --master-disable
-run sudo defaults write /var/db/SystemPolicy-prefs.plist enabled -string no
-
-echo "Disable open application confirmation dialog."
-run defaults write com.apple.LaunchServices LSQuarantine -bool false
-
 echo "Disable sudden motion sensor. (Not useful for SSDs)."
 run sudo pmset -a sms 0
 
