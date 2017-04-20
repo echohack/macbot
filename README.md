@@ -2,7 +2,9 @@
 
 Automatically configure your Mac with sane and secure settings. Install and configure popular applications the way they were meant to be used.
 
-Uses highly advanced *grass fed*, *black hole accretion disc powered* shell scripting! Now with 60% less needless abstractions!
+Uses highly advanced *grass fed*, *black hole accretion disc powered* shell scripting!
+
+![Example Image](example.png)
 
 # Usage
 
