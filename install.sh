@@ -279,7 +279,6 @@ run cargo install rustfmt
 
 # Install all the Mac App Store applications using mas. https://github.com/mas-cli/mas
 mac_app_login=$(mas account | grep @)
-echo $mac_app_login
 if [ -z "$mac_app_login" ] ; then
     chapter "Let's install Mac App Store applications. What is your Mac App Store email login? $bold"
     read mac_app_login
