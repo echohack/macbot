@@ -102,6 +102,7 @@ echo "Disable annoying UI error sounds."
 run defaults write com.apple.systemsound com.apple.sound.beep.volume -int 0
 run defaults write com.apple.sound.beep feedback -int 0
 run defaults write com.apple.systemsound com.apple.sound.uiaudio.enabled -int 0
+run osascript -e 'set volume alert volume 0'
 
 echo "Show all filename extensions."
 run defaults write NSGlobalDomain AppleShowAllExtensions -bool true
