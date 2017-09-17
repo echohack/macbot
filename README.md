@@ -1,8 +1,6 @@
 # Macbot
 
-Automatically configure your Mac with sane and secure settings. Install and configure popular applications the way they were meant to be used.
-
-Uses highly advanced *grass fed*, *black hole accretion disc powered* shell scripting!
+Macbot is a shell script to automatically configure your Mac with sane and secure settings. It's free to use, Apache 2.0 licensed.
 
 ![Example Image](example.png)
 
