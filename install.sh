@@ -263,6 +263,9 @@ run brew install git
 echo "Install mas (Mac App Store Command Line)."
 run brew install mas
 
+echo "Install Inkscape"
+run brew install caskformula/caskformula/inkscape
+
 echo "Install youtube-dl."
 run brew install youtube-dl
 run brew install ffmpeg
@@ -294,11 +297,17 @@ run mas install 424389933
 echo "Install Keynote."
 run mas install 409183694
 
-echo "Install Things."
-run mas install 407951449
+echo "Install Things3."
+run mas install 904280696
 
 echo "Install Slack."
 run mas install 803453959
+
+echo "Install Decompressor."
+run mas install 1033480833
+
+echo "Install GIF Keyboard."
+run mas install 1043270657
 
 echo "Upgrade any Mac App Store applications."
 run mas upgrade
