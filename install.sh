@@ -225,6 +225,10 @@ run systemsetup -setwakeonnetworkaccess off
 echo "Disable Bonjour multicast advertisements."
 run defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisements -bool YES
 
+# This is disabled by default, but sometimes people turn it on and forget to turn it back off again.
+echo "Turn off remote desktop access."
+run sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -configure -access -off
+
 echo "Enable Mac App Store automatic updates."
 run defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
 
