@@ -63,6 +63,9 @@ run sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.s
 echo "Disable sudden motion sensor. (Not useful for SSDs)."
 run sudo pmset -a sms 0
 
+echo "Use 24-hour time. Use the format EEE MMM d  H:mm:ss"
+run defaults write com.apple.menuextra.clock DateFormat -string 'EEE MMM d  H:mm:ss'
+
 echo "Disable press-and-hold for keys in favor of key repeat."
 run defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
@@ -311,6 +314,7 @@ run softwareupdate -i -a
 
 run killall Dock
 run killall Finder
+run killall SystemUIServer
 
 chapter "Some settings will not take effect until you restart your computer."
 headline " Your Mac is setup and ready!"
