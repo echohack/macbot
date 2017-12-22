@@ -267,6 +267,9 @@ run brew link --force curl
 echo "Install git."
 run brew install git
 
+echo "Install jq."
+run brew install jq
+
 echo "Install mas (Mac App Store Command Line)."
 run brew install mas
 
