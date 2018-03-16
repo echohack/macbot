@@ -313,6 +313,9 @@ run mas install 803453959
 echo "Install Decompressor."
 run mas install 1033480833
 
+echo "Install Speedtest."
+run mas install 1153157709
+
 echo "Upgrade any Mac App Store applications."
 run mas upgrade
 
