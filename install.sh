@@ -247,7 +247,9 @@ run defaults write com.apple.commerce AutoUpdate -bool true
 # Blocklists
 
 echo "Block all Facebook domains."
-run cat block_facebook | sudo tee -a /etc/hosts
+if ! grep --quiet facebook /etc/hosts; then
+    run cat block_facebook | sudo tee -a /etc/hosts
+fi
 
 # Install Applications
 
