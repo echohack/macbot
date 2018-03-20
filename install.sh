@@ -244,6 +244,11 @@ run defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 echo "Turn on Mac App Store auto-update."
 run defaults write com.apple.commerce AutoUpdate -bool true
 
+# Blocklists
+
+echo "Block all Facebook domains."
+run cat block_facebook >> /etc/hosts
+
 # Install Applications
 
 # Note: Before installing Homebrew, set the following settings in your .bash_profile for increased privacy.
