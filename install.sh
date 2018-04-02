@@ -216,8 +216,8 @@ run defaults write com.apple.CrashReporter DialogType none
 echo "Enable Stealth Mode. Computer will not respond to ICMP ping requests or connection attempts from a closed TCP/UDP port."
 run defaults write /Library/Preferences/com.apple.alf stealthenabled -bool true
 
-echo "Set all network interfaces to use Google DNS."
-run bash ./use_google_dns.sh
+echo "Set all network interfaces to use Cloudflare DNS (1.1.1.1)."
+run bash ./use_cloudflare_dns.sh
 
 echo "Disable wake on network access."
 run systemsetup -setwakeonnetworkaccess off

@@ -2,33 +2,33 @@
 # Description: Sets all network interfaces to use Google DNS servers, but only
 # for the network interfaces that are not compliant.
 
-function non_google_dns {
+function not_cloudflare_dns {
     INTERFACE=$1
     if [ "$INTERFACE" = "An asterisk (*) denotes that a network service is disabled." ]; then
         echo 0
     else
         DNS=$(networksetup -getdnsservers "$INTERFACE" | tr -d "\n")
-        if [ "$DNS" != "8.8.8.88.8.4.4" ]; then
+        if [ "$DNS" != "1.1.1.11.0.0.1" ]; then
             echo 1
         else
             echo 0
         fi
     fi
 }
-export -f non_google_dns
+export -f not_cloudflare_dns
 
-function set_google_dns {
+function set_cloudflare_dns {
     INTERFACE=$1
-    sudo networksetup -setdnsservers "$INTERFACE" 8.8.8.8 8.8.4.4
+    sudo networksetup -setdnsservers "$INTERFACE" 1.1.1.1 1.0.0.1
 }
-export -f set_google_dns
+export -f set_cloudflare_dns
 
 
 function process {
     INTERFACE=$1
-    IS_NON_GOOGLE_DNS=$(non_google_dns "$INTERFACE")
-    if [ "$IS_NON_GOOGLE_DNS" = "1" ]; then
-        set_google_dns "$INTERFACE"
+    IS_NOT_CLOUDFLARE_DNS=$(not_cloudflare_dns "$INTERFACE")
+    if [ "$IS_NOT_CLOUDFLARE_DNS" = "1" ]; then
+        set_cloudflare_dns "$INTERFACE"
     fi
 }
 export -f process
