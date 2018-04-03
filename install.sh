@@ -286,6 +286,11 @@ echo "Install youtube-dl."
 run brew install youtube-dl
 run brew install ffmpeg
 
+echo "Install keyboard flashing tool for Nightfox Mechanical keyboard."
+run brew install dfu-util
+# Flash with dfu-util -a O -R -D kiibohd.dfu.bin
+
+
 # Trust a curl | bash? Why not.
 echo "Install rust using Rustup."
 rustc --version
