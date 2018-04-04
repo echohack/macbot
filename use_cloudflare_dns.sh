@@ -1,5 +1,5 @@
 #!/bin/bash
-# Description: Sets all network interfaces to use Google DNS servers, but only
+# Description: Sets all network interfaces but only
 # for the network interfaces that are not compliant.
 
 function not_cloudflare_dns {
