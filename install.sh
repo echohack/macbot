@@ -295,6 +295,9 @@ run brew install dfu-util
 echo "Install spectacle."
 run brew cask install spectacle
 
+echo "Install docker."
+run brew cask install docker
+
 # Trust a curl | bash? Why not.
 echo "Install rust using Rustup."
 rustc --version
