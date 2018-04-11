@@ -273,8 +273,10 @@ echo "Install updated curl + OpenSSL."
 run brew install curl --with-openssl
 run brew link --force curl
 
-echo "Install git."
+echo "Install and configure git."
 run brew install git
+run git config --global user.email "echohack@users.noreply.github.com"
+git config --global user.name "echohack"
 
 echo "Install jq."
 run brew install jq
@@ -290,6 +292,8 @@ echo "Install keyboard flashing tool for Nightfox Mechanical keyboard."
 run brew install dfu-util
 # Flash with dfu-util -a 0 -R -D kiibohd.dfu.bin
 
+echo "Install spectacle."
+run brew cask install spectacle
 
 # Trust a curl | bash? Why not.
 echo "Install rust using Rustup."
@@ -311,9 +315,6 @@ fi
 
 echo "Install Reeder."
 run mas install 880001334
-
-echo "Install Final Cut Pro."
-run mas install 424389933
 
 echo "Install Keynote."
 run mas install 409183694
