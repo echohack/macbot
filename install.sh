@@ -298,6 +298,12 @@ run brew cask install spectacle
 echo "Install docker."
 run brew cask install docker
 
+echo "Install VLC."
+run brew cask install vlc
+
+echo "Install LiceCap."
+run brew cask install licecap
+
 # Trust a curl | bash? Why not.
 echo "Install rust using Rustup."
 rustc --version
