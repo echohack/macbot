@@ -294,6 +294,9 @@ echo "Install keyboard flashing tool for Nightfox Mechanical keyboard."
 run brew install dfu-util
 # Flash with dfu-util -a 0 -R -D kiibohd.dfu.bin
 
+echo "Install exercism CLI."
+run brew install exercism
+
 echo "Install spectacle."
 run brew cask install spectacle
 
