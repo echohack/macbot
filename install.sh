@@ -286,7 +286,9 @@ run brew install mas
 
 echo "Install youtube-dl."
 run brew install youtube-dl
+run brew upgrade youtube-dl
 run brew install ffmpeg
+run brew upgrade ffmpeg
 
 echo "Install keyboard flashing tool for Nightfox Mechanical keyboard."
 run brew install dfu-util
@@ -304,12 +306,29 @@ run brew cask install vlc
 echo "Install LiceCap."
 run brew cask install licecap
 
+echo "Install Visual Studio Code."
+run brew cask install visual-studio-code
+
+echo "Install Visual Studio Code Extensions."
+vscode_install_ext(){
+    run code --install-extension $@
+}
+vscode_install_ext bungcip.better-toml
+vscode_install_ext mauve.terraform
+vscode_install_ext ms-python.python
+vscode_install_ext octref.vetur
+vscode_install_ext rust-lang.rust
+
 # Trust a curl | bash? Why not.
 echo "Install rust using Rustup."
 rustc --version
 if [[ $? != 0 ]] ; then
     run curl https://sh.rustup.rs -sSf | sh
+    run rustup update
 fi
+
+echo "Install RLS."
+run rustup component add rls-preview rust-analysis rust-src
 
 echo "Install rustfmt."
 run cargo install rustfmt
