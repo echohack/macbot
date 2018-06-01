@@ -266,13 +266,6 @@ else
     run brew update
 fi
 
-echo "Install an updated OpenSSL."
-run brew install openssl
-
-echo "Install updated curl + OpenSSL."
-run brew install curl --with-openssl
-run brew link --force curl
-
 echo "Install and configure git."
 run brew install git
 run git config --global user.email "echohack@users.noreply.github.com"
@@ -280,6 +273,11 @@ git config --global user.name "echohack"
 
 echo "Install jq."
 run brew install jq
+
+echo "Install Habitat."
+run brew tap habitat-sh/habitat
+run brew install hab
+run brew upgrade hab
 
 echo "Install mas (Mac App Store Command Line)."
 run brew install mas
