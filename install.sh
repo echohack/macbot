@@ -332,7 +332,7 @@ echo "Install RLS."
 run rustup component add rls-preview rust-analysis rust-src
 
 echo "Install rustfmt."
-run cargo install rustfmt
+rustup component add rustfmt-preview
 
 # Install all the Mac App Store applications using mas. https://github.com/mas-cli/mas
 mac_app_login=$(mas account | grep @)
