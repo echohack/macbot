@@ -59,6 +59,10 @@ run sudo scutil --set HostName "'$computer_name'"
 run sudo scutil --set LocalHostName "'$computer_name'"
 run sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "'$computer_name'"
 
+# Files
+echo "Enable bash autocomplete"
+run sudo cp ./files/.inputrc ~/.inputrc
+
 # UX And Performance Improvements
 echo "Disable sudden motion sensor. (Not useful for SSDs)."
 run sudo pmset -a sms 0
@@ -294,6 +298,7 @@ run brew install dfu-util
 
 echo "Install exercism CLI."
 run brew install exercism
+run brew upgrade exercism
 
 echo "Install spectacle."
 run brew cask install spectacle
