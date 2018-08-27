@@ -99,8 +99,8 @@ run defaults write com.apple.screencapture location -string ~/screenshots
 echo "Disable menu transparency."
 run defaults write com.apple.universalaccess reduceTransparency -int 1
 
-echo "Increase contrast."
-run defaults write com.apple.universalaccess increaseContrast -int 1
+echo "Turn off increased contrast. macOS 10.14 causes ugly white borders."
+run defaults write com.apple.universalaccess increaseContrast -int 0
 
 echo "Disable mouse enlargement with jiggle."
 run defaults write ~/Library/Preferences/.GlobalPreferences CGDisableCursorLocationMagnification -bool true
