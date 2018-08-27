@@ -59,6 +59,10 @@ run sudo scutil --set HostName "'$computer_name'"
 run sudo scutil --set LocalHostName "'$computer_name'"
 run sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "'$computer_name'"
 
+# Files
+echo "Enable bash autocomplete"
+run sudo cp ./files/.inputrc ~/.inputrc
+
 # UX And Performance Improvements
 echo "Disable sudden motion sensor. (Not useful for SSDs)."
 run sudo pmset -a sms 0
@@ -95,8 +99,8 @@ run defaults write com.apple.screencapture location -string ~/screenshots
 echo "Disable menu transparency."
 run defaults write com.apple.universalaccess reduceTransparency -int 1
 
-echo "Increase contrast."
-run defaults write com.apple.universalaccess increaseContrast -int 1
+echo "Turn off increased contrast. macOS 10.14 causes ugly white borders."
+run defaults write com.apple.universalaccess increaseContrast -int 0
 
 echo "Disable mouse enlargement with jiggle."
 run defaults write ~/Library/Preferences/.GlobalPreferences CGDisableCursorLocationMagnification -bool true
@@ -294,6 +298,7 @@ run brew install dfu-util
 
 echo "Install exercism CLI."
 run brew install exercism
+run brew upgrade exercism
 
 echo "Install spectacle."
 run brew cask install spectacle
@@ -314,6 +319,7 @@ echo "Install okta_aws tool for Chef Software AWS integration."
 run brew tap chef/okta_aws
 run brew install okta_aws
 
+testing code commit
 echo "Install Visual Studio Code Extensions."
 vscode_install_ext(){
     run code --install-extension $@
