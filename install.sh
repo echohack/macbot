@@ -275,6 +275,12 @@ run brew install git
 run git config --global user.email "echohack@users.noreply.github.com"
 git config --global user.name "echohack"
 
+echo "Install and configure spacemacs."
+run brew tap d12frosted/emacs-plus
+run brew install emacs-plus
+run brew upgrade emacs-plus
+run brew tap homebrew/cask-fonts && brew cask install font-source-code-pro
+
 echo "Install jq."
 run brew install jq
 
@@ -386,3 +392,6 @@ run killall SystemUIServer
 
 chapter "Some settings will not take effect until you restart your computer."
 headline " Your Mac is setup and ready!"
+
+
+#https://itunes.apple.com/us/app/pixelmator-pro/id1289583905?mt=12
