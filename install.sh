@@ -280,6 +280,7 @@ run brew tap d12frosted/emacs-plus
 run brew install emacs-plus
 run brew upgrade emacs-plus
 run brew tap homebrew/cask-fonts && brew cask install font-source-code-pro
+run ln -Fs `find /usr/local -name "Emacs.app"` /Applications/Emacs.app
 
 echo "Install jq."
 run brew install jq
