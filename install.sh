@@ -257,6 +257,15 @@ else
     echo "${dim}▹ Facebook domains already blocked. $reset"
 fi
 
+# Custom Settings
+
+echo "Use a custom ringtone for iMessage."
+echo "See instructions in install.sh"
+# Drop your custom ringtone in:
+# /System/Library/PrivateFrameworks/ToneLibrary.framework/Versions/A/Resources/Ringtones
+# Edit this file with a system: entry matching the ringtone
+#/System/Library/PrivateFrameworks/ToneKit.framework/Versions/A/Resources/TKRingtones.plist
+
 # Install Applications
 
 # Note: Before installing Homebrew, set the following settings in your .bash_profile for increased privacy.
