@@ -257,15 +257,6 @@ else
     echo "${dim}▹ Facebook domains already blocked. $reset"
 fi
 
-# Custom Settings
-
-echo "Use a custom ringtone for iMessage."
-echo "See instructions in install.sh"
-# Drop your custom ringtone in:
-# /System/Library/PrivateFrameworks/ToneLibrary.framework/Versions/A/Resources/Ringtones
-# Edit this file with a system: entry matching the ringtone
-#/System/Library/PrivateFrameworks/ToneKit.framework/Versions/A/Resources/TKRingtones.plist
-
 # Install Applications
 
 # Note: Before installing Homebrew, set the following settings in your .bash_profile for increased privacy.
@@ -335,10 +326,6 @@ run brew cask install licecap
 echo "Install Visual Studio Code."
 run brew cask install visual-studio-code
 
-echo "Install okta_aws tool for Chef Software AWS integration."
-run brew tap chef/okta_aws
-run brew install okta_aws
-
 testing code commit
 echo "Install Visual Studio Code Extensions."
 vscode_install_ext(){
@@ -389,6 +376,11 @@ run mas install 1033480833
 
 echo "Install Speedtest."
 run mas install 1153157709
+
+# Work Apps and Settings
+echo "Install okta_aws tool for Chef Software AWS integration."
+run brew tap chef/okta_aws
+run brew install okta_aws
 
 echo "Upgrade any Mac App Store applications."
 run mas upgrade
