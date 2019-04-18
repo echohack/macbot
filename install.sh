@@ -275,6 +275,9 @@ run brew install git
 run git config --global user.email "echohack@users.noreply.github.com"
 git config --global user.name "echohack"
 
+echo "Prevent iTunes from taking backups of iPhone."
+run defaults write com.apple.iTunes DeviceBackupsDisabled -bool true
+
 echo "Install and configure spacemacs."
 run brew tap d12frosted/emacs-plus
 run brew install emacs-plus
