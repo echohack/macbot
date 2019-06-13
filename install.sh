@@ -317,6 +317,9 @@ run brew upgrade exercism
 echo "Install shellcheck."
 run brew install shellcheck
 
+echo "Install pre-commit"
+run brew install pre-commit
+
 echo "Install spectacle."
 run brew cask install spectacle
 
