@@ -314,6 +314,9 @@ echo "Install exercism CLI."
 run brew install exercism
 run brew upgrade exercism
 
+echo "Install shellcheck."
+run brew install shellcheck
+
 echo "Install spectacle."
 run brew cask install spectacle
 
