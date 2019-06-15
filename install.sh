@@ -368,23 +368,44 @@ if [ -z "$mac_app_login" ] ; then
     run mas signin $mac_app_login
 fi
 
-echo "Install Reeder."
-run mas install 880001334
+echo "Install Decompressor."
+run mas install 1033480833
+
+echo "Install Divvy."
+run mas install 413857545
+
+echo "Install DrawnStrips Reader."
+run mas install 473092872
+
+echo "Install GIF Keyboard."
+run mas install 1043270657
+
+echo "Install HEIC Converter."
+run mas install 1294126402
 
 echo "Install Keynote."
 run mas install 409183694
 
-echo "Install Things3."
-run mas install 904280696
+echo "Install Microsoft Remote Desktop."
+run mas install 1295203466
+
+echo "Install Pixelmator Pro."
+run mas install 1289583905
+
+echo "Install Reeder."
+run mas install 880001334
 
 echo "Install Slack."
 run mas install 803453959
 
-echo "Install Decompressor."
-run mas install 1033480833
-
 echo "Install Speedtest."
 run mas install 1153157709
+
+echo "Install Things3."
+run mas install 904280696
+
+echo "Install Tweetdeck."
+run mas install 485812721
 
 # Work Apps and Settings
 echo "Install okta_aws tool for Chef Software AWS integration."
