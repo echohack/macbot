@@ -278,13 +278,6 @@ git config --global user.name "echohack"
 echo "Prevent iTunes from taking backups of iPhone."
 run defaults write com.apple.iTunes DeviceBackupsDisabled -bool true
 
-echo "Install and configure spacemacs."
-run brew tap d12frosted/emacs-plus
-run brew install emacs-plus
-run brew upgrade emacs-plus
-run brew tap homebrew/cask-fonts && brew cask install font-source-code-pro
-run ln -Fs `find /usr/local -name "Emacs.app"` /Applications/Emacs.app
-
 echo "Install jq."
 run brew install jq
 
@@ -343,7 +336,6 @@ vscode_install_ext(){
 vscode_install_ext bungcip.better-toml
 vscode_install_ext mauve.terraform
 vscode_install_ext ms-python.python
-vscode_install_ext octref.vetur
 vscode_install_ext rust-lang.rust
 
 # Trust a curl | bash? Why not.
@@ -353,12 +345,6 @@ if [[ $? != 0 ]] ; then
     run curl https://sh.rustup.rs -sSf | sh
     run rustup update
 fi
-
-echo "Install RLS."
-run rustup component add rls-preview rust-analysis rust-src
-
-echo "Install rustfmt."
-rustup component add rustfmt-preview
 
 # Install all the Mac App Store applications using mas. https://github.com/mas-cli/mas
 mac_app_login=$(mas account | grep @)
@@ -376,9 +362,6 @@ run mas install 413857545
 
 echo "Install DrawnStrips Reader."
 run mas install 473092872
-
-echo "Install GIF Keyboard."
-run mas install 1043270657
 
 echo "Install HEIC Converter."
 run mas install 1294126402
