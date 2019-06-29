@@ -1,38 +1,12 @@
 #!/usr/bin/env bash
 
+source "./public.bash"
+
 # Current User
 user=$(id -un)
 
-# Script's color palette
-reset="\033[0m"
-highlight="\033[42m\033[97m"
-dot="\033[33m▸ $reset"
-dim="\033[2m"
-bold="\033[1m"
-
 # Keep-alive: update existing `sudo` time stamp until script has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
-headline() {
-    printf "${highlight} %s ${reset}\n" "$@"
-}
-
-chapter() {
-    echo "${highlight} $((count++)).) $@ ${reset}\n"
-}
-
-# Prints out a step, if last parameter is true then without an ending newline
-step() {
-    if [ $# -eq 1 ]
-    then echo "${dot}$@"
-    else echo "${dot}$@"
-    fi
-}
-
-run() {
-    echo "${dim}▹ $@ $reset"
-    eval $@
-}
 
 echo ""
 headline " Let's secure your Mac and install basic applications."
@@ -257,6 +231,26 @@ else
     echo "${dim}▹ Facebook domains already blocked. $reset"
 fi
 
+# Download Packaged Software
+# Some software comes packaged directly from the vendor
+# Eventually we'll automate the installs of each of these
+# But the biggest challenege is just remembering
+# Which apps you need to download, so let's do that for now
+
+download_file "https://download.mozilla.org/?product=firefox-latest-ssl&os=osx&lang=en-US" "firefox-latest.dmg"
+
+download_file "https://app-updates.agilebits.com/download/OPM7" "1password-latest.pkg"
+
+download_file "https://iterm2.com/downloads/stable/iTerm2-3_2_9.zip" "iTerm2-3_2_9.zip"
+
+download_file "https://discordapp.com/api/download?platform=osx" "discord-latest.dmg"
+
+download_file "https://dl.iina.io/IINA.v1.0.4.dmg" "IINA.v1.0.4.dmg"
+
+download_file "https://cdn-fastly.obsproject.com/downloads/obs-mac-23.2.1-installer.pkg" "obs-mac-23.2.1-installer.pkg"
+
+download_file "https://www.kaleidoscopeapp.com/download" "kaleidoscope-latest.zip"
+
 # Install Applications
 
 # Note: Before installing Homebrew, set the following settings in your .bash_profile for increased privacy.
@@ -280,6 +274,9 @@ run defaults write com.apple.iTunes DeviceBackupsDisabled -bool true
 
 echo "Install jq."
 run brew install jq
+
+echo "Install tldr."
+run brew install tldr
 
 echo "Install Habitat."
 run brew tap habitat-sh/habitat
@@ -313,9 +310,6 @@ run brew install shellcheck
 echo "Install pre-commit"
 run brew install pre-commit
 
-echo "Install spectacle."
-run brew cask install spectacle
-
 echo "Install docker."
 run brew cask install docker
 
@@ -328,7 +322,6 @@ run brew cask install licecap
 echo "Install Visual Studio Code."
 run brew cask install visual-studio-code
 
-testing code commit
 echo "Install Visual Studio Code Extensions."
 vscode_install_ext(){
     run code --install-extension $@
