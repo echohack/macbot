@@ -255,6 +255,7 @@ download_file "https://github.com/transmission/transmission-releases/raw/master/
 
 download_file "https://d2oxtzozd38ts8.cloudfront.net/audiohijack/download/AudioHijack.zip" "AudioHijack.zip"
 
+download_filei "https://github.com/pje/WavTap/releases/download/0.3.0/WavTap.0.3.0.pkg" "WavTap.0.3.0.pkg"
 # Blackmagic uses expiring keys to force you through their registration dialog
 # *sigh* Manual download for now I guess... https://sw.blackmagicdesign.com/DesktopVideo/v11.2/Blackmagic_Desktop_Video_Macintosh_11.2.zip
 
