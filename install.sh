@@ -251,6 +251,8 @@ download_file "https://cdn-fastly.obsproject.com/downloads/obs-mac-23.2.1-instal
 
 download_file "https://www.kaleidoscopeapp.com/download" "kaleidoscope-latest.zip"
 
+download_file "https://github.com/transmission/transmission-releases/raw/master/Transmission-2.94.dmg" "Transmission-2.94.dmg"
+
 # Blackmagic uses expiring keys to force you through their registration dialog
 # *sigh* Manual download for now I guess... https://sw.blackmagicdesign.com/DesktopVideo/v11.2/Blackmagic_Desktop_Video_Macintosh_11.2.zip
 
