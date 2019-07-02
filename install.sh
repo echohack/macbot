@@ -259,6 +259,8 @@ download_file "https://github.com/pje/WavTap/releases/download/0.3.0/WavTap.0.3.
 
 download_file "https://central.github.com/deployments/desktop/desktop/latest/darwin" "github-latest.dmg"
 
+download_file "https://steamcdn-a.akamaihd.net/client/installer/steam.dmg" "steam-latest.dmg"
+
 # Blackmagic uses expiring keys to force you through their registration dialog
 # *sigh* Manual download for now I guess... https://sw.blackmagicdesign.com/DesktopVideo/v11.2/Blackmagic_Desktop_Video_Macintosh_11.2.zip
 
