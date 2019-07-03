@@ -342,6 +342,7 @@ vscode_install_ext(){
 vscode_install_ext bungcip.better-toml
 vscode_install_ext mauve.terraform
 vscode_install_ext ms-python.python
+vscode_install_ext redhat.vscode-yaml
 vscode_install_ext rust-lang.rust
 
 # Trust a curl | bash? Why not.
