@@ -261,6 +261,8 @@ download_file "https://central.github.com/deployments/desktop/desktop/latest/dar
 
 download_file "https://steamcdn-a.akamaihd.net/client/installer/steam.dmg" "steam-latest.dmg"
 
+download_file "https://updates.signal.org/desktop/signal-desktop-mac-1.25.3.zip" "signal-desktop-mac-1.25.3.zip"
+
 # Blackmagic uses expiring keys to force you through their registration dialog
 # *sigh* Manual download for now I guess... https://sw.blackmagicdesign.com/DesktopVideo/v11.2/Blackmagic_Desktop_Video_Macintosh_11.2.zip
 
