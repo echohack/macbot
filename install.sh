@@ -344,8 +344,12 @@ vscode_install_ext(){
 vscode_install_ext bungcip.better-toml
 vscode_install_ext mauve.terraform
 vscode_install_ext ms-python.python
+vscode_install_ext ms-vscode.vscode-typescript-tslint-plugin
 vscode_install_ext redhat.vscode-yaml
 vscode_install_ext rust-lang.rust
+
+echo "Install npm."
+run brew install npm
 
 # Trust a curl | bash? Why not.
 echo "Install rust using Rustup."
