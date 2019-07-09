@@ -305,6 +305,11 @@ echo "Prevent Google Chrome from Syncing automatically."
 run defaults write com.google.Chrome SyncDisabled -bool true
 run defaults write com.google.Chrome RestrictSigninToPattern -string ".*@example.com"
 
+echo "Install Shadowfox (dark theme for Firefox)."
+run brew install srkomodo/tap/shadowfox-updater
+# This requires some gui interaction and firefox pre-installed...
+# shadowfox-updater -generate-uuids -profile-index 0 -set-dark-theme
+
 echo "Install youtube-dl."
 run brew install youtube-dl
 run brew upgrade youtube-dl
