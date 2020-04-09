@@ -8,7 +8,7 @@ function not_cloudflare_dns {
         echo 0
     else
         DNS=$(networksetup -getdnsservers "$INTERFACE" | tr -d "\n")
-        if [ "$DNS" != "1.1.1.11.0.0.1" ]; then
+        if [ "$DNS" != "1.1.1.21.0.0.2" ]; then
             echo 1
         else
             echo 0
@@ -19,7 +19,7 @@ export -f not_cloudflare_dns
 
 function set_cloudflare_dns {
     INTERFACE=$1
-    sudo networksetup -setdnsservers "$INTERFACE" 1.1.1.1 1.0.0.1
+    sudo networksetup -setdnsservers "$INTERFACE" 1.1.1.2 1.0.0.2
 }
 export -f set_cloudflare_dns
 

@@ -61,7 +61,7 @@ run sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.s
 
 # Files
 echo "Enable bash autocomplete"
-run sudo cp ./files/.inputrc ~/.inputrc
+run sudo cp ./files/inputrc ~/.inputrc
 
 # UX And Performance Improvements
 echo "Disable sudden motion sensor. (Not useful for SSDs)."
@@ -69,9 +69,6 @@ run sudo pmset -a sms 0
 
 echo "Use 24-hour time. Use the format EEE MMM d  H:mm:ss"
 run defaults write com.apple.menuextra.clock DateFormat -string 'EEE MMM d  H:mm:ss'
-
-#echo "Disable press-and-hold for keys in favor of key repeat."
-#run defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 echo "Set a fast keyboard repeat rate, after a good initial delay."
 run defaults write NSGlobalDomain KeyRepeat -int 1
@@ -86,9 +83,6 @@ run defaults write com.apple.dock expose-animation-duration -float 0.1
 echo "Remove the auto-hiding dock delay."
 run defaults write com.apple.dock autohide-delay -int 0
 
-echo "Use the dark theme."
-run defaults write ~/Library/Preferences/.GlobalPreferences AppleInterfaceStyle -string "Dark"
-
 echo "Save screenshots in PNG format."
 run defaults write com.apple.screencapture type -string png
 
@@ -98,9 +92,6 @@ run defaults write com.apple.screencapture location -string ~/Screenshots
 
 echo "Disable menu transparency."
 run defaults write com.apple.universalaccess reduceTransparency -int 1
-
-echo "Turn off increased contrast. macOS 10.14 causes ugly white borders."
-run defaults write com.apple.universalaccess increaseContrast -int 0
 
 echo "Disable mouse enlargement with jiggle."
 run defaults write ~/Library/Preferences/.GlobalPreferences CGDisableCursorLocationMagnification -bool true
@@ -138,8 +129,18 @@ run defaults write DSDontWriteNetworkStores com.apple.desktopservices -int 1
 echo "Don't ask to use external drives as a Time Machine backup."
 run defaults write DoNotOfferNewDisksForBackup com.apple.TimeMachine -int 1
 
+# Disabled UX tweaks
 #echo "Disable natural scrolling."
 #run defaults write ~/Library/Preferences/.GlobalPreferences com.apple.swipescrolldirection -bool false
+#
+#echo "Disable press-and-hold for keys in favor of key repeat."
+#run defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+#
+#echo "Use the dark theme."
+#run defaults write ~/Library/Preferences/.GlobalPreferences AppleInterfaceStyle -string "Dark"
+#
+#echo "Turn off increased contrast. macOS 10.14 causes ugly white borders."
+#run defaults write com.apple.universalaccess increaseContrast -int 0
 
 # Security And Privacy Improvements
 echo "Disable Safari from auto-filling sensitive data."
@@ -151,15 +152,15 @@ run defaults write ~/Library/Preferences/com.apple.Safari AutoFillPasswords -boo
 echo "Disable Safari from automatically opening files."
 run defaults write ~/Library/Preferences/com.apple.Safari AutoOpenSafeDownloads -bool false
 
-echo "Always block cookies and local storage in Safari."
-run defaults write ~/Library/Preferences/com.apple.Safari BlockStoragePolicy -bool false
+#echo "Always block cookies and local storage in Safari."
+#run defaults write ~/Library/Preferences/com.apple.Safari BlockStoragePolicy -bool false
 
 echo "Enable Safari warnings when visiting fradulent websites."
 run defaults write ~/Library/Preferences/com.apple.Safari WarnAboutFraudulentWebsites -bool true
 
-echo "Disable javascript in Safari."
-run defaults write ~/Library/Preferences/com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptEnabled -bool false
-run defaults write ~/Library/Preferences/com.apple.Safari WebKitJavaScriptEnabled -bool false
+#echo "Disable javascript in Safari."
+#run defaults write ~/Library/Preferences/com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptEnabled -bool false
+#run defaults write ~/Library/Preferences/com.apple.Safari WebKitJavaScriptEnabled -bool false
 
 echo "Block popups in Safari."
 run defaults write ~/Library/Preferences/com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically -bool false
@@ -209,7 +210,7 @@ run defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.co
 
 echo "Set screen to lock as soon as the screensaver starts."
 run defaults write com.apple.screensaver askForPassword -int 1
-run defaults write com.apple.screensaver askForPasswordDelay -int 0
+run defaults write com.apple.screensaver askForPasswordDelay -int 5
 
 echo "Don't default to saving documents to iCloud."
 run defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
@@ -220,7 +221,7 @@ run defaults write com.apple.CrashReporter DialogType none
 echo "Enable Stealth Mode. Computer will not respond to ICMP ping requests or connection attempts from a closed TCP/UDP port."
 run defaults write /Library/Preferences/com.apple.alf stealthenabled -bool true
 
-echo "Set all network interfaces to use Cloudflare DNS (1.1.1.1)."
+echo "Set all network interfaces to use Cloudflare DNS (1.1.1.2 - malware blocking)."
 run bash ./use_cloudflare_dns.sh
 
 echo "Disable wake on network access."
@@ -270,6 +271,17 @@ run defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 #    run brew update
 #fi
 
+echo "Install brew taps."
+run brew tap "homebrew/core"
+run brew tap "homebrew/bundle"
+run brew tap "homebrew/cask"
+run brew tap "homebrew/cask-fonts"
+
+echo "Installing a modern BASH and setting that as your shell."
+run brew install bash
+run sudo echo "/usr/local/bin/bash" >> /etc/shells
+run chsh -s /usr/local/bin/bash
+
 echo "Install and configure git."
 run brew install git
 run git config --global user.email "george.miranda@gmail.com"
@@ -277,11 +289,6 @@ git config --global user.name "gmiranda23"
 
 echo "Install jq."
 run brew install jq
-
-#echo "Install Habitat."
-#run brew tap habitat-sh/habitat
-#run brew install hab
-#run brew upgrade hab
 
 echo "Install mas (Mac App Store Command Line)."
 run brew install mas
@@ -292,57 +299,81 @@ run brew upgrade youtube-dl
 run brew install ffmpeg
 run brew upgrade ffmpeg
 
-#echo "Install keyboard flashing tool for Nightfox Mechanical keyboard."
-#run brew install dfu-util
-## Flash with dfu-util -a 0 -R -D kiibohd.dfu.bin
+echo "Install fd (find alternative)."
+run brew install "fd"
 
-echo "Install exercism CLI."
-run brew install exercism
-run brew upgrade exercism
+echo "Install fuzzy find CLI tool."
+run brew install "fzf"
 
-#echo "Install spectacle."
-#run brew cask install spectacle
+echo "Install ripgrep finder."
+run brew install "ripgrep"
 
-#echo "Install docker."
-#run brew cask install docker
+echo "Install thefuck CLI helper."
+run brew install "thefuck"
+
+
+# Install basic apps from brew cask
+echo "Install Atom editor."
+run brew cask "atom"
+
+echo "Install Audacity."
+#run brew cask "audacity"
+
+echo "Install Caffeine."
+run brew cask "caffeine"
+
+echo "Install Choosy."
+run brew cask "choosy"
+
+echo "Install Dropbox."
+run brew cask "dropbox"
+
+echo "Install Firefox."
+run brew cask "firefox"
+
+echo "Install Chrome."
+run brew cask "google-chrome"
+
+echo "Install iTerm2."
+run brew cask "iterm2"
+
+echo "Install Krisp."
+run brew cask "krisp"
+
+echo "Install MacVim."
+run brew cask "macvim"
+
+echo "Install Menumeters."
+run brew cask "menumeters"
+
+echo "Install Moom."
+run brew cask "moom"
+
+echo "Install Paintbrush."
+run brew cask "paintbrush"
+
+echo "Install Screenflow."
+run brew cask "screenflow"
+
+echo "Install Skype."
+run brew cask "skype"
+
+echo "Install Spotify."
+run brew cask "spotify"
+
+echo "Install Timer."
+run brew cask "timer"
 
 #echo "Install VLC."
 #run brew cask install vlc
 
-#echo "Install LiceCap."
-#run brew cask install licecap
+echo "Install Zoom."
+run brew cask "zoomus"
 
-#echo "Install Visual Studio Code."
-#run brew cask install visual-studio-code
+echo "Install terminal fonts."
+run brew cask install "font-hack-nerd-font"
+run brew cask install "font-inconsolata-for-powerline"
 
-#echo "Install okta_aws tool for Chef Software AWS integration."
-#run brew tap chef/okta_aws
-#run brew install okta_aws
-
-#testing code commit
-#echo "Install Visual Studio Code Extensions."
-#vscode_install_ext(){
-#    run code --install-extension $@
-#}
-#vscode_install_ext bungcip.better-toml
-#vscode_install_ext mauve.terraform
-#vscode_install_ext ms-python.python
-#vscode_install_ext octref.vetur
-#vscode_install_ext rust-lang.rust
-
-# Trust a curl | bash? Why not.
-#echo "Install rust using Rustup."
-#rustc --version
-#if [[ $? != 0 ]] ; then
-#    run curl https://sh.rustup.rs -sSf | sh
-#    run rustup update
-#fi
-
-#echo "Install RLS."
-#run rustup component add rls-preview rust-analysis rust-src
-
-#echo "Install rustfmt."
-#rustup component add rustfmt-preview
 
 # Install all the Mac App Store applications using mas. https://github.com/mas-cli/mas
 mac_app_login=$(mas account | grep @)
@@ -352,23 +383,26 @@ if [ -z "$mac_app_login" ] ; then
     run mas signin $mac_app_login
 fi
 
-#echo "Install Reeder."
-#run mas install 880001334
+echo "Install 1Password 7."
+run mas install 1333542190
+
+echo "Install Activity Timer."
+run mas install 808647808
 
 #echo "Install Keynote."
 #run mas install 409183694
 
-echo "Install Things3."
-run mas install 904280696
-
-#echo "Install Slack."
-#run mas install 803453959
-
-#echo "Install Decompressor."
-#run mas install 1033480833
+echo "Install Slack."
+run mas install 803453959
 
 echo "Install Speedtest."
 run mas install 1153157709
+
+echo "Install Things3."
+run mas install 904280696
+
+echo "Install Xcode."
+run mas install 497799835
 
 echo "Upgrade any Mac App Store applications."
 run mas upgrade
