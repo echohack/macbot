@@ -293,11 +293,6 @@ run brew install jq
 echo "Install tldr."
 run brew install tldr
 
-echo "Install Habitat."
-run brew tap habitat-sh/habitat
-run brew install hab
-run brew upgrade hab
-
 echo "Install mas (Mac App Store Command Line)."
 run brew install mas
 
