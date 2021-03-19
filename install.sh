@@ -70,6 +70,9 @@ echo "Save screenshots to user screenshots directory instead of desktop."
 run mkdir ~/screenshots
 run defaults write com.apple.screencapture location -string ~/screenshots
 
+echo "Disable shadow in screenshots."
+defaults write com.apple.screencapture disable-shadow -bool true
+
 echo "Disable menu transparency."
 run defaults write com.apple.universalaccess reduceTransparency -int 1
 
@@ -115,12 +118,42 @@ run defaults write DoNotOfferNewDisksForBackup com.apple.TimeMachine -int 1
 echo "Disable natural scrolling."
 run defaults write ~/Library/Preferences/.GlobalPreferences com.apple.swipescrolldirection -bool false
 
+echo "Always show scrollbars."
+run defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+
+echo "Expand save panel by default."
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+
+echo "Expand print panel by default."
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+echo "Disable automatic capitalization."
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+
+echo "Disable smart dashes."
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+echo "Disable automate period substitution."
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
+echo "Disable smart quotes."
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
+echo "Enable subpixel font rendering on non-Apple LCDs."
+# Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
+defaults write NSGlobalDomain AppleFontSmoothing -int 1
+
 # Security And Privacy Improvements
 echo "Disable Safari from auto-filling sensitive data."
 run defaults write ~/Library/Preferences/com.apple.Safari AutoFillCreditCardData -bool false
 run defaults write ~/Library/Preferences/com.apple.Safari AutoFillFromAddressBook -bool false
 run defaults write ~/Library/Preferences/com.apple.Safari AutoFillMiscellaneousForms -bool false
 run defaults write ~/Library/Preferences/com.apple.Safari AutoFillPasswords -bool false
+
+echo "Enable Do Not Track in Safari."
+defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 
 echo "Disable Safari from automatically opening files."
 run defaults write ~/Library/Preferences/com.apple.Safari AutoOpenSafeDownloads -bool false
@@ -193,6 +226,9 @@ run defaults write com.apple.CrashReporter DialogType none
 
 echo "Enable Stealth Mode. Computer will not respond to ICMP ping requests or connection attempts from a closed TCP/UDP port."
 run defaults write /Library/Preferences/com.apple.alf stealthenabled -bool true
+
+echo "Enable AirDrop over Ethernet."
+defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
 echo "Set all network interfaces to use Cloudflare DNS (1.1.1.1)."
 run bash ./use_cloudflare_dns.sh
@@ -403,11 +439,32 @@ run mas install 904280696
 echo "Install Tweetdeck."
 run mas install 485812721
 
-# Work Apps and Settings
-echo "Install okta_aws tool for Chef Software AWS integration."
-run brew tap chef/okta_aws
-run brew install okta_aws
+# Transmission.app
 
+echo "Transmisson: Don’t prompt for confirmation before downloading."
+defaults write org.m0k.transmission DownloadAsk -bool false
+defaults write org.m0k.transmission MagnetOpenAsk -bool false
+
+echo "Transmisson: Don’t prompt for confirmation before removing non-downloading active transfers."
+defaults write org.m0k.transmission CheckRemoveDownloading -bool true
+
+echo "Transmisson: Trash original torrent files."
+defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
+
+echo "Transmisson: Hide the donate message."
+defaults write org.m0k.transmission WarningDonate -bool false
+echo "Transmisson: Hide the legal disclaimer."
+defaults write org.m0k.transmission WarningLegal -bool false
+
+echo "Transmisson: IP block list."
+defaults write org.m0k.transmission BlocklistNew -bool true
+defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.net/public/biglist.p2p.gz"
+defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
+
+echo "Transmisson: Randomize port on launch."
+defaults write org.m0k.transmission RandomPort -bool true
+
+# Final updates
 echo "Upgrade any Mac App Store applications."
 run mas upgrade
 
