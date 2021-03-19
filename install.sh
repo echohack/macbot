@@ -37,6 +37,9 @@ run sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.s
 echo "Enable bash autocomplete"
 run sudo cp ./files/.inputrc ~/.inputrc
 
+echo "Disable startup chime sound."
+run sudo nvram SystemAudioVolume=" "
+
 # UX And Performance Improvements
 echo "Disable sudden motion sensor. (Not useful for SSDs)."
 run sudo pmset -a sms 0
