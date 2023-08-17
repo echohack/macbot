@@ -6,7 +6,7 @@ Macbot is a shell script to automatically configure your Mac with sane and secur
 
 # Usage
 
-1. Review all the code in this repository. The code in here is kept simple and readable on purpose. It's just shell scripts.
+1. Review all the code in this repository. The code in here is kept simple and readable on purpose. It's just shell scripts. 
 
 2. Modify the `install.sh`. You'll probably want to tweak some of the performance settings, and install different applications.
 
