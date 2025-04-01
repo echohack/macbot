@@ -278,30 +278,27 @@ fi
 
 download_file "https://download.mozilla.org/?product=firefox-latest-ssl&os=osx&lang=en-US" "firefox-latest.dmg"
 
-download_file "https://app-updates.agilebits.com/download/OPM7" "1password-latest.pkg"
-
-download_file "https://iterm2.com/downloads/stable/iTerm2-3_2_9.zip" "iTerm2-3_2_9.zip"
+download_file "https://downloads.1password.com/mac/1Password.zip" "1password-latest.pkg"
 
 download_file "https://discordapp.com/api/download?platform=osx" "discord-latest.dmg"
 
-download_file "https://dl.iina.io/IINA.v1.0.4.dmg" "IINA.v1.0.4.dmg"
+download_file "https://dl-portal.iina.io/IINA.v1.3.5.dmg" "IINA-latest.dmg"
 
-download_file "https://cdn-fastly.obsproject.com/downloads/obs-mac-23.2.1-installer.pkg" "obs-mac-23.2.1-installer.pkg"
+download_file "https://cdn-fastly.obsproject.com/downloads/obs-studio-31.0.2-macos-apple.dmg" "obs-mac-31.0.2-installer.pkg"
 
 download_file "https://www.kaleidoscopeapp.com/download" "kaleidoscope-latest.zip"
 
-download_file "https://github.com/transmission/transmission-releases/raw/master/Transmission-2.94.dmg" "Transmission-2.94.dmg"
-
 download_file "https://d2oxtzozd38ts8.cloudfront.net/audiohijack/download/AudioHijack.zip" "AudioHijack.zip"
 
-download_file "https://github.com/pje/WavTap/releases/download/0.3.0/WavTap.0.3.0.pkg" "WavTap.0.3.0.pkg"
+download_file "https://cdn.rogueamoeba.com/loopback/download/Loopback.zip" "Loopback-latest.zip"
 
-download_file "https://central.github.com/deployments/desktop/desktop/latest/darwin" "github-latest.dmg"
+download_file "https://desktop-release.notion-static.com/Notion-4.7.2-universal.dmg" "Notion-4.7.2-universal.dmg"
 
-download_file "https://steamcdn-a.akamaihd.net/client/installer/steam.dmg" "steam-latest.dmg"
+download_file "https://s3.us-west-2.amazonaws.com/calendar-desktop-release.notion-static.com/Notion%20Calendar-1.130.0-universal.dmg" "Notion-Calendar-1.130.0-universal.dmg"
 
-download_file "https://updates.signal.org/desktop/signal-desktop-mac-1.25.3.zip" "signal-desktop-mac-1.25.3.zip"
+download_file "https://desktop.linear.app/mac" "linear-latest.dmg"
 
+download_file "https://files.tableplus.com/macos/600/TablePlus.dmg" "TablePlus-600.dmg"
 # Blackmagic uses expiring keys to force you through their registration dialog
 # *sigh* Manual download for now I guess... https://sw.blackmagicdesign.com/DesktopVideo/v11.2/Blackmagic_Desktop_Video_Macintosh_11.2.zip
 
@@ -329,15 +326,15 @@ run defaults write com.apple.iTunes DeviceBackupsDisabled -bool true
 echo "Install jq."
 run brew install jq
 
-echo "Install tldr."
-run brew install tldr
-
 echo "Install mas (Mac App Store Command Line)."
 run brew install mas
 
 echo "Prevent Google Chrome from Syncing automatically."
 run defaults write com.google.Chrome SyncDisabled -bool true
 run defaults write com.google.Chrome RestrictSigninToPattern -string ".*@example.com"
+
+echo "Install Raycast."
+run brew install --cask raycast
 
 echo "Install Shadowfox (dark theme for Firefox)."
 run brew install srkomodo/tap/shadowfox-updater
@@ -350,10 +347,6 @@ run brew upgrade youtube-dl
 run brew install ffmpeg
 run brew upgrade ffmpeg
 
-echo "Install keyboard flashing tool for Nightfox Mechanical keyboard."
-run brew install dfu-util
-# Flash with dfu-util -a 0 -R -D kiibohd.dfu.bin
-
 echo "Install exercism CLI."
 run brew install exercism
 run brew upgrade exercism
@@ -363,6 +356,12 @@ run brew install shellcheck
 
 echo "Install pre-commit"
 run brew install pre-commit
+
+echo "Install Warp CLI."
+run brew install --cask warp
+
+echo "Install OrbStack."
+run brew install orbstack
 
 echo "Install docker."
 run brew cask install docker
@@ -409,63 +408,20 @@ fi
 echo "Install Decompressor."
 run mas install 1033480833
 
-echo "Install Divvy."
-run mas install 413857545
-
-echo "Install DrawnStrips Reader."
-run mas install 473092872
-
 echo "Install HEIC Converter."
 run mas install 1294126402
 
 echo "Install Keynote."
 run mas install 409183694
 
-echo "Install Microsoft Remote Desktop."
-run mas install 1295203466
-
 echo "Install Pixelmator Pro."
 run mas install 1289583905
-
-echo "Install Reeder."
-run mas install 880001334
 
 echo "Install Slack."
 run mas install 803453959
 
-echo "Install Speedtest."
-run mas install 1153157709
-
 echo "Install Things3."
 run mas install 904280696
-
-echo "Install Tweetdeck."
-run mas install 485812721
-
-# Transmission.app
-
-echo "Transmisson: Don’t prompt for confirmation before downloading."
-defaults write org.m0k.transmission DownloadAsk -bool false
-defaults write org.m0k.transmission MagnetOpenAsk -bool false
-
-echo "Transmisson: Don’t prompt for confirmation before removing non-downloading active transfers."
-defaults write org.m0k.transmission CheckRemoveDownloading -bool true
-
-echo "Transmisson: Trash original torrent files."
-defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
-
-echo "Transmisson: Hide the donate message."
-defaults write org.m0k.transmission WarningDonate -bool false
-echo "Transmisson: Hide the legal disclaimer."
-defaults write org.m0k.transmission WarningLegal -bool false
-
-echo "Transmisson: IP block list."
-defaults write org.m0k.transmission BlocklistNew -bool true
-defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.net/public/biglist.p2p.gz"
-defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
-
-echo "Transmisson: Randomize port on launch."
-defaults write org.m0k.transmission RandomPort -bool true
 
 # Final updates
 echo "Upgrade any Mac App Store applications."
